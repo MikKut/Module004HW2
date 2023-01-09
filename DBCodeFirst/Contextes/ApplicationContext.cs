@@ -12,6 +12,11 @@ namespace DBCodeFirst.Contextes
         {
             Database.EnsureCreated();
         }
+
+        public ApplicationContext()
+        {
+            Database.EnsureCreated();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new ConfigurationBuilder();
