@@ -10,11 +10,13 @@ namespace DBCodeFirst.Contextes
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
         public ApplicationContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,7 +29,7 @@ namespace DBCodeFirst.Contextes
             // create configuration
             var config = builder.Build();
             // get connection string
-            var conString = config.GetConnectionString("DefaultConnection");
+            var conString = config.GetConnectionString("ApplicationContext");
             optionsBuilder.UseSqlServer(conString);
         }
 
