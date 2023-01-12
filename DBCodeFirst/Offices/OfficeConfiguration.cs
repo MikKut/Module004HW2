@@ -7,6 +7,11 @@ namespace DBCodeFirst.Offices
     {
         public void Configure(EntityTypeBuilder<Office> builder)
         {
+            ConfiureColumns(builder);
+        }
+        
+        private void ConfiureColumns(EntityTypeBuilder<Office> builder)
+        {
             builder.ToTable(nameof(Office)).HasKey(p => p.OfficeId);
             builder.Property(p => p.OfficeId).HasColumnName(nameof(Office.OfficeId)).ValueGeneratedOnAdd();
             builder.Property(p => p.Title).HasColumnName(nameof(Office.Title)).HasMaxLength(100).IsRequired();
